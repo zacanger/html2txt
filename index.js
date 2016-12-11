@@ -19,12 +19,6 @@ const
 , strip    = a => a
   .replace(/<([^>]+)>/ig, '\n') // strip leftover tags
   .replace(/\n\s*\n/g, '\n\n') // collapse multiple newlines
-  .replace(/&nbsp;/ig, ' ')
-  .replace(/&amp;/g, '&')
-  .replace(/&lt;/g, '<')
-  .replace(/&gt;/g, '>')
-  .replace(/&quot/g, '"')
-// TODO: the above, but without the bottle of malbec
 
 const main = a => get(a, res => {
   let b = ''
