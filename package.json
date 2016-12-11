@@ -1,6 +1,6 @@
 {
   "name": "html2txt",
-  "description": "html2txt",
+  "description": "html2text but in node",
   "version": "0.0.1",
   "author": {
     "name": "Zac Anger",
@@ -12,8 +12,7 @@
   "preferGlobal": true,
   "bin": "./index.js",
   "scripts": {
-    "start": "node index",
-    "test": ""
+    "test": "echo 'no, sorry'"
   },
   "homepage": "https://github.com/zacanger/html2txt#readme",
   "repository": {
@@ -22,10 +21,16 @@
   },
   "bugs": "https://github.com/zacanger/html2txt/issues",
   "keywords": [
-    "",
-    "html2txt"
+    "html",
+    "html2text",
+    "html2txt",
+    "markdown",
+    "text"
   ],
-  "dependencies": {},
+  "dependencies": {
+    "to-markdown": "^3.0.3",
+    "wordwrap": "^1.0.0"
+  },
   "devDependencies": {},
   "engines": {
     "node": ">=6.0.0"
