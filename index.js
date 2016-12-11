@@ -6,7 +6,7 @@ const
 , http     = require('http')
 , https    = require('https')
 , { rows } = process.stdout
-, len      = (rows < 80 ? 80 : rows)
+, len      = (rows < 80 ? 120 : rows)
 , toMd     = require('to-markdown')
 , ww       = require('wordwrap')
 , wrapper  = ww(len)
@@ -28,7 +28,7 @@ const
 const main = a => get(a, res => {
   let b = ''
   res.on('data', d => { b += d.toString() })
-  res.on('end', () => log(strip(wrap(conv(b)))))
+  res.on('end', () => log(wrap(strip(conv(b)))))
 })
 
 if (!module.parent) main(src)
