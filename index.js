@@ -22,7 +22,7 @@ const
   .replace(/&nbsp;/ig, ' ')
   .replace(/&amp;/g, '&')
   .replace(/&lt;/g, '<')
-  .replace(/&gt;/g, '<')
+  .replace(/&gt;/g, '>')
   .replace(/&quot/g, '"')
 // TODO: the above, but without the bottle of malbec
 
