@@ -12,7 +12,11 @@ const
 , conv     = a => toMd(a, opts)
 , wrap     = a => wrapper(a)
 , log      = a => console.log(a)
-, src      = url.includes('http://' || 'https://') ? url : `http://${url}`
+, src      = url.includes('http://')
+  ? url
+  : url.includes('https://')
+    ? url.replace(/https/, 'http')
+    : `http://${url}`
 
 const main = a => get(a, res => {
   let b = ''
