@@ -16,11 +16,19 @@ const
 , log      = a => console.log(a)
 , src      = url.includes('://') ? url : `http://${url}`
 , get      = url.includes('https://') ? https.get : http.get
+, strip    = a => a
+  .replace(/(<([^>]+)>|&nbsp;)/ig, ' ') // strip leftover tags and nbsp
+  .replace(/\n\s*\n/g, '\n\n') // collapse multiple newlines
+  .replace(/&amp;/g, '&')
+  .replace(/&lt;/g, '<')
+  .replace(/&gt;/g, '<')
+  .replace(/&quot/g, '"')
+// TODO: the above, but without the bottle of malbec
 
 const main = a => get(a, res => {
   let b = ''
-  res.on('data', d => {b += d.toString()})
-  res.on('end', () => log(wrap(conv(b))))
+  res.on('data', d => { b += d.toString() })
+  res.on('end', () => log(strip(wrap(conv(b)))))
 })
 
 if (!module.parent) main(src)
