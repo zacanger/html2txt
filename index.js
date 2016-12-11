@@ -17,8 +17,9 @@ const
 , src      = url.includes('://') ? url : `http://${url}`
 , get      = url.includes('https://') ? https.get : http.get
 , strip    = a => a
-  .replace(/(<([^>]+)>|&nbsp;)/ig, ' ') // strip leftover tags and nbsp
+  .replace(/<([^>]+)>/ig, '\n') // strip leftover tags
   .replace(/\n\s*\n/g, '\n\n') // collapse multiple newlines
+  .replace(/&nbsp;/ig, ' ')
   .replace(/&amp;/g, '&')
   .replace(/&lt;/g, '<')
   .replace(/&gt;/g, '<')
