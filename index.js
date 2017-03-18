@@ -1,22 +1,27 @@
 #!/usr/bin/env node
 
-const
-  pkg      = require('./package.json')
-, url      = process.argv[2] || pkg.homepage
-, http     = require('http')
-, https    = require('https')
-, { rows } = process.stdout
-, len      = rows < 80 ? 120 : rows
-, toMd     = require('to-markdown')
-, ww       = require('wordwrap')
-, wrapper  = ww(len)
-, opts     = { gfm: true }
-, conv     = (a) => toMd(a, opts)
-, wrap     = (a) => wrapper(a)
-, log      = (a) => console.log(a)
-, src      = url.includes('://') ? url : `http://${url}`
-, get      = url.includes('https://') ? https.get : http.get
-, strip    = (a) => a
+const pkg = require('./package.json')
+const url = process.argv[2] || pkg.homepage
+const http = require('http')
+const https = require('https')
+const { rows } = process.stdout
+const len = rows < 80 ? 120 : rows
+const toMd = require('to-markdown')
+const ww = require('wordwrap')
+const wrapper = ww(len)
+const converters = [
+  {
+    filter: [ 'style', 'script' ]
+  , replacement: (_) => ''
+  }
+]
+const opts = { gfm: true, converters }
+const conv = (a) => toMd(a, opts)
+const wrap = (a) => wrapper(a)
+const log = (a) => console.log(a)
+const src = url.includes('://') ? url : `http://${url}`
+const get = url.includes('https://') ? https.get : http.get
+const strip = (a) => a
   .replace(/<([^>]+)>/ig, '\n') // strip leftover tags
   .replace(/\n\s*\n/g, '\n\n')  // collapse multiple newlines
 
