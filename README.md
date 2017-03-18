@@ -14,14 +14,14 @@
 
 `html2txt zacanger.com`
 
+`html2txt ~/foo/bar.html`
+
 ## Why?
 
 I like the original a lot, but I wanted there to be one in Node.
 
 ## Roadmap
 
-* API?
-* Files (currently just http(s))
 * Better opts for `to-markdown`
   * Hopefully including getting rid of the chained `replace`s
 
