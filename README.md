@@ -20,11 +20,6 @@
 
 I like the original a lot, but I wanted there to be one in Node.
 
-## Roadmap
-
-* Better opts for `to-markdown`
-  * Hopefully including getting rid of the chained `replace`s
-
 ## License:
 
-WTFPL
+[WTFPL](./LICENSE.md)
