@@ -23,19 +23,6 @@ const strip = (a) => a
   .replace(/<([^>]+)>/ig, '\n') // strip leftover tags
   .replace(/\n\s*\n/g, '\n\n')  // collapse multiple newlines
 
-const doTheThing = (a) =>
-  log(wrap(strip(conv(a))))
-
-const doHttp = (a) => {
-  const u = a.includes('://') ? a : `http://${a}`
-  const get = u.startsWith('https://') ? https.get : http.get
-  return get(u, (res) => {
-    let b = ''
-    res.on('data', (d) => { b += d.toString() })
-    res.on('end', () => doTheThing(b))
-  })
-}
-
 const checkIsFile = (a) => {
   try {
     statSync(resolve(a))
@@ -45,13 +32,26 @@ const checkIsFile = (a) => {
   }
 }
 
-const readIfFile = (a) =>
+const doTheThing = (a) =>
+  log(wrap(strip(conv(a))))
+
+const runIfUrl = (a) => {
+  const u = a.includes('://') ? a : `http://${a}`
+  const get = u.startsWith('https://') ? https.get : http.get
+  return get(u, (res) => {
+    let b = ''
+    res.on('data', (d) => { b += d.toString() })
+    res.on('end', () => doTheThing(b))
+  })
+}
+
+const runIfFile = (a) =>
   doTheThing(readFileSync(resolve(a)).toString())
 
 const getTheString = (a) =>
   checkIsFile(a)
-    ? readIfFile(a)
-    : doHttp(a)
+    ? runIfFile(a)
+    : runIfUrl(a)
 
 const main = (a) =>
   getTheString(a)
