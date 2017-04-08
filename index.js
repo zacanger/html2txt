@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const { statSync, readFileSync } = require('fs')
+const { readFileSync } = require('fs')
 const { resolve } = require('path')
 const request = require('request')
 const pkg = require('./package.json')
@@ -18,18 +18,12 @@ const opts = { gfm: true, converters }
 const conv = (a) => toMd(a, opts)
 const wrap = (a) => wrapper(a)
 const log = (a) => console.log(a)
-const strip = (a) => a
-  .replace(/<([^>]+)>/ig, '\n') // strip leftover tags
-  .replace(/\n\s*\n/g, '\n\n')  // collapse multiple newlines
-
-const checkIsFile = (a) => {
-  try {
-    statSync(resolve(a))
-    return true
-  } catch (_) {
-    return false
-  }
-}
+const {
+  checkForFile,
+  removeTags,
+  collapseNewlines
+} = require('zeelib')
+const strip = (a) => (removeTags(collapseNewlines(a)))
 
 const doTheThing = (a) =>
   log(wrap(strip(conv(a))))
@@ -52,7 +46,7 @@ const runIfFile = (a) =>
   doTheThing(readFileSync(resolve(a)).toString())
 
 const getTheString = (a) =>
-  checkIsFile(a)
+  checkForFile(a)
     ? runIfFile(a)
     : runIfUrl(a)
 
