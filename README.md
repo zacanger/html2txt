@@ -20,6 +20,10 @@
 
 I like the original a lot, but I wanted there to be one in Node.
 
+## Known Bugs
+
+Right now, some filepaths don't work.
+
 ## License:
 
 [WTFPL](./LICENSE.md)
