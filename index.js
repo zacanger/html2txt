@@ -23,24 +23,21 @@ const {
   removeTags,
   collapseNewlines
 } = require('zeelib')
-const strip = (a) => (removeTags(collapseNewlines(a)))
+const strip = (a) => removeTags(collapseNewlines(a))
 
 const doTheThing = (a) =>
   log(wrap(strip(conv(a))))
 
-const runIfUrl = (a) => {
-  const uri = a.includes('://') ? a : `http://${a}`
-  const followAllRedirects = true
-  return request({
-    uri
-  , followAllRedirects
+const runIfUrl = (a) =>
+  request({
+    uri: a.includes('://') ? a : `http://${a}`
+  , followAllRedirects: true
   }, (err, res, body) => {
     if (err) {
       return console.warn(err)
     }
     return doTheThing(body)
   })
-}
 
 const runIfFile = (a) =>
   doTheThing(readFileSync(resolve(a)).toString())
