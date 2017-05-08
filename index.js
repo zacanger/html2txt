@@ -23,7 +23,7 @@ const {
   removeTags,
   collapseNewlines
 } = require('zeelib')
-const strip = (a) => removeTags(collapseNewlines(a))
+const strip = (a) => collapseNewlines(removeTags(a))
 
 const doTheThing = (a) =>
   log(wrap(strip(conv(a))))
