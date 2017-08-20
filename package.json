@@ -29,9 +29,9 @@
   ],
   "dependencies": {
     "request": "2.81.0",
-    "to-markdown": "3.0.4",
+    "to-markdown": "3.1.0",
     "wordwrap": "1.0.0",
-    "zeelib": "0.9.4"
+    "zeelib": "3.0.3"
   },
   "devDependencies": {},
   "engines": {
