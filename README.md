@@ -22,4 +22,4 @@ I like the original a lot, but I wanted there to be one in Node.
 
 ## License:
 
-[WTFPL](./LICENSE.md)
+[MIT](./LICENSE.md)
