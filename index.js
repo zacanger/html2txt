@@ -18,9 +18,9 @@ const opts = { gfm: true, converters }
 const conv = (a) => toMd(a, opts)
 const wrap = (a) => wrapper(a)
 const log = (a) => console.log(a)
-const collapseNewlines = require('zeelib/lib/collapse-newlines').default
-const removeTags = require('zeelib/lib/remove-tags').default
-const checkForFile = require('zeelib/lib/check-for-file').default
+const collapseNewlines = require('zeelib/lib/collapse-newlines')
+const removeTags = require('zeelib/lib/remove-tags')
+const checkForFile = require('zeelib/lib/check-for-file')
 const strip = (a) => collapseNewlines(removeTags(a))
 
 const doTheThing = (a) =>
