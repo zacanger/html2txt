@@ -21,11 +21,11 @@ const log = console.log
 const collapseNewlines = require('zeelib/lib/collapse-newlines')
 const removeTags = require('zeelib/lib/remove-tags')
 const checkForFile = require('zeelib/lib/check-for-file')
+const pipe = require('zeelib/lib/pipe')
 const strip = (a = '') => collapseNewlines(removeTags(a))
 const handleEnds = (a = '') => a.trim() + '\n'
 
-const doTheThing = (a) =>
-  log(handleEnds(wrap(strip(conv(a)))))
+const doTheThing = pipe(conv, strip, wrap, handleEnds, log)
 
 const runIfUrl = (a) =>
   request({
