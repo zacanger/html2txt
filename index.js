@@ -10,26 +10,27 @@ const len = rows < 80 ? 120 : rows
 const toMd = require('to-markdown')
 const ww = require('wordwrap')
 const wrapper = ww(len)
-const converters = [{
-  filter: [ 'style', 'script' ]
-, replacement: (_) => ''
-}]
+const converters = [ {
+  filter: [ 'style', 'script' ],
+  replacement: (_) => '',
+} ]
 const opts = { gfm: true, converters }
 const conv = (a) => toMd(a, opts)
 const wrap = (a) => wrapper(a)
-const log = (a) => console.log(a)
+const log = console.log
 const collapseNewlines = require('zeelib/lib/collapse-newlines')
 const removeTags = require('zeelib/lib/remove-tags')
 const checkForFile = require('zeelib/lib/check-for-file')
-const strip = (a) => collapseNewlines(removeTags(a))
+const strip = (a = '') => collapseNewlines(removeTags(a))
+const handleEnds = (a = '') => a.trim() + '\n'
 
 const doTheThing = (a) =>
-  log(wrap(strip(conv(a))))
+  log(handleEnds(wrap(strip(conv(a)))))
 
 const runIfUrl = (a) =>
   request({
-    uri: a.includes('://') ? a : `http://${a}`
-  , followAllRedirects: true
+    uri: a.includes('://') ? a : `http://${a}`,
+    followAllRedirects: true
   }, (err, res, body) => {
     if (err) {
       return console.warn(err)
