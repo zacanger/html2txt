@@ -12,7 +12,7 @@ const ww = require('wordwrap')
 const wrapper = ww(len)
 const converters = [ {
   filter: [ 'style', 'script' ],
-  replacement: (_) => '',
+  replacement: (_) => ''
 } ]
 const opts = { gfm: true, converters }
 const conv = (a) => toMd(a, opts)
