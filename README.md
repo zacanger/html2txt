@@ -20,6 +20,4 @@
 
 I like the original a lot, but I wanted there to be one in Node.
 
-## License:
-
-[MIT](./LICENSE.md)
+[LICENSE](./LICENSE.md)
