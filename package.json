@@ -31,10 +31,10 @@
     "request": "2.88.0",
     "to-markdown": "3.1.1",
     "wordwrap": "1.0.0",
-    "zeelib": "11.0.2"
+    "zeelib": "8.6.1"
   },
   "devDependencies": {
-    "sortpack": "2.0.1",
+    "sortpack": "2.0.4",
     "standard": "14.3.1"
   },
   "engines": {
