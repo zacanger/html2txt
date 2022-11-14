@@ -1,11 +1,19 @@
 #!/usr/bin/env node
 
 const fetch = require('node-fetch')
-const { readFileSync } = require('fs')
+const { readFileSync, statSync } = require('fs')
 const { resolve } = require('path')
 const toMd = require('to-markdown')
 const ww = require('wordwrap')
-const checkForFile = require('zeelib/lib/file-exists')
+
+const checkForFile = (filePath) => {
+  try {
+    statSync(resolve(filePath))
+    return true
+  } catch {
+    return false
+  }
+}
 
 const url = process.argv[2] || 'https://example.com'
 const { rows } = process.stdout
