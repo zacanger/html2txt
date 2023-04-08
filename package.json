@@ -32,12 +32,12 @@
     "text"
   ],
   "dependencies": {
-    "node-fetch": "2.6.8",
+    "node-fetch": "2.6.9",
     "to-markdown": "3.1.1",
     "wordwrap": "1.0.0"
   },
   "devDependencies": {
-    "sortpack": "2.3.2",
+    "sortpack": "2.3.3",
     "standard": "17.0.0"
   },
   "engines": {
