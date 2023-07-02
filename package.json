@@ -32,15 +32,15 @@
     "text"
   ],
   "dependencies": {
-    "node-fetch": "2.6.9",
+    "node-fetch": "2.6.12",
     "to-markdown": "3.1.1",
     "wordwrap": "1.0.0"
   },
   "devDependencies": {
-    "sortpack": "2.3.3",
-    "standard": "17.0.0"
+    "sortpack": "2.3.4",
+    "standard": "17.1.0"
   },
   "engines": {
-    "node": ">=16.0.0"
+    "node": ">=18.0.0"
   }
 }
