@@ -13,7 +13,9 @@
     "index.js"
   ],
   "preferGlobal": true,
-  "bin": "./index.js",
+  "bin": {
+    "html2txt": "index.js"
+  },
   "scripts": {
     "preversion": "npm t",
     "test": "sortpack && standard && ./index.js"
@@ -21,7 +23,7 @@
   "homepage": "https://github.com/zacanger/html2txt#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/zacanger/html2txt.git"
+    "url": "git+https://github.com/zacanger/html2txt.git"
   },
   "bugs": "https://github.com/zacanger/html2txt/issues",
   "keywords": [
