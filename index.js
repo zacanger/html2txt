@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 
-const fetch = require('node-fetch')
 const { readFileSync, statSync } = require('fs')
 const { resolve } = require('path')
 const toMd = require('to-markdown')
